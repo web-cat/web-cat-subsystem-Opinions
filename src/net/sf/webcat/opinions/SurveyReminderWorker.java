@@ -21,7 +21,9 @@
 
 package net.sf.webcat.opinions;
 
+import net.sf.webcat.jobqueue.HostDescriptor;
 import net.sf.webcat.jobqueue.JobBase;
+import net.sf.webcat.jobqueue.QueueDescriptor;
 import net.sf.webcat.jobqueue.WorkerDescriptor;
 import net.sf.webcat.jobqueue.WorkerThread;
 
@@ -42,9 +44,9 @@ public class SurveyReminderWorker
      * Creates a new object.
      * @param descriptor the descriptor for this worker thread
      */
-    public SurveyReminderWorker(WorkerDescriptor descriptor)
+    public SurveyReminderWorker()
     {
-        super(descriptor);
+        super(SurveyReminderJob.ENTITY_NAME);
         assert SurveyReminderJob.ENTITY_NAME.equals(
             queueDescriptor().jobEntityName());
     }
