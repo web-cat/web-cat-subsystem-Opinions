@@ -21,10 +21,6 @@
 
 package net.sf.webcat.opinions;
 
-import net.sf.webcat.jobqueue.HostDescriptor;
-import net.sf.webcat.jobqueue.JobBase;
-import net.sf.webcat.jobqueue.QueueDescriptor;
-import net.sf.webcat.jobqueue.WorkerDescriptor;
 import net.sf.webcat.jobqueue.WorkerThread;
 
 //-------------------------------------------------------------------------
@@ -32,7 +28,8 @@ import net.sf.webcat.jobqueue.WorkerThread;
  * A {@link WorkerThread} subclass for processing survey reminders.
  *
  * @author Stephen Edwards
- * @version $Id$
+ * @author Last changed by $Author$
+ * @version $Revision$, $Date$
  */
 public class SurveyReminderWorker
     extends WorkerThread<SurveyReminderJob>
@@ -47,8 +44,6 @@ public class SurveyReminderWorker
     public SurveyReminderWorker()
     {
         super(SurveyReminderJob.ENTITY_NAME);
-        assert SurveyReminderJob.ENTITY_NAME.equals(
-            queueDescriptor().jobEntityName());
     }
 
 

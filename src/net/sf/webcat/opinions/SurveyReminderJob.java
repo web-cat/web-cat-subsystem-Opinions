@@ -28,8 +28,9 @@ import com.webobjects.foundation.*;
 /**
  * TODO: place a real description here.
  *
- * @author
- * @version $Id$
+ * @author Stephen Edwards
+ * @author Last changed by $Author$
+ * @version $Revision$, $Date$
  */
 public class SurveyReminderJob
     extends _SurveyReminderJob

@@ -21,7 +21,6 @@
 
 package net.sf.webcat.opinions;
 
-import net.sf.webcat.dbupdate.Database;
 import net.sf.webcat.dbupdate.UpdateSet;
 import java.sql.SQLException;
 import org.apache.log4j.Logger;
@@ -33,7 +32,8 @@ import org.apache.log4j.Logger;
  * output for this class uses its parent class' logger.
  *
  * @author  Stephen Edwards
- * @version $Id$
+ * @author Last changed by $Author$
+ * @version $Revision$, $Date$
  */
 public class OpinionsDatabaseUpdates
     extends UpdateSet

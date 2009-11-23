@@ -21,15 +21,7 @@
 
 package net.sf.webcat.opinions;
 
-import com.webobjects.eoaccess.EOGeneralAdaptorException;
-import com.webobjects.eoaccess.EOUtilities;
-import com.webobjects.eocontrol.EOEditingContext;
-import com.webobjects.foundation.NSArray;
-
-import java.sql.SQLException;
-
 import org.apache.log4j.Logger;
-import net.sf.webcat.core.Application;
 import net.sf.webcat.core.Subsystem;
 import net.sf.webcat.jobqueue.QueueDescriptor;
 
@@ -40,7 +32,8 @@ import net.sf.webcat.jobqueue.QueueDescriptor;
  * frustrating a given assignment is.
  *
  * @author Stephen Edwards
- * @version $Id$
+ * @author Last changed by $Author$
+ * @version $Revision$, $Date$
  */
 public class Opinions
     extends Subsystem
