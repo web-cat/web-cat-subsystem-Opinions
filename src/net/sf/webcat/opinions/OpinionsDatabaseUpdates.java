@@ -79,16 +79,9 @@ public class OpinionsDatabaseUpdates
             log.info( "creating table TSurveyReminderJob" );
             database().executeSQL(
                 "CREATE TABLE TSurveyReminderJob "
-                + "(assignmentOfferingId INTEGER , "
+                + "(assignmentId INTEGER , "
                 + "dueTime DATETIME , "
-                + "enqueueTime DATETIME NOT NULL, "
-                + "OID INTEGER NOT NULL, "
-                + "isCancelled BIT NOT NULL, "
-                + "isPaused BIT NOT NULL, "
-                + "priority INTEGER NOT NULL, "
-                + "scheduledTime DATETIME , "
-                + "userId INTEGER , "
-                + "workerId INTEGER )");
+                + "OID INTEGER NOT NULL )");
             database().executeSQL(
                 "ALTER TABLE TSurveyReminderJob ADD PRIMARY KEY (OID)" );
         }
