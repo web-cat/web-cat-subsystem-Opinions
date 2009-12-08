@@ -22,8 +22,10 @@
 package net.sf.webcat.opinions;
 
 import com.webobjects.appserver.*;
+import com.webobjects.foundation.NSTimestamp;
 import net.sf.webcat.core.*;
 import net.sf.webcat.grader.Assignment;
+import net.sf.webcat.grader.Submission;
 import org.apache.log4j.Logger;
 
 //-------------------------------------------------------------------------
@@ -55,10 +57,32 @@ public class OpinionsSurveyPage
     //~ KVC Attributes (must be public) .......................................
 
     public Assignment assignment;
+    public SurveyResponse response;
 
 
     //~ Methods ...............................................................
 
+    // ----------------------------------------------------------
+    public void appendToResponse(WOResponse pageResponse, WOContext context)
+    {
+        if (response == null)
+        {
+            response = SurveyResponse.create(localContext());
+            response.setAssignmentRelationship(assignment);
+            response.setUserRelationship(user());
+        }
+        super.appendToResponse(pageResponse, context);
+    }
+
+
+    // ----------------------------------------------------------
+    public WOComponent next()
+    {
+        response.setSubmitTime(new NSTimestamp());
+        // Since we're in a SaveCancelPage, the call to super.next()
+        // will save all changes.
+        return super.next();
+    }
 
 
     //~ Instance/static variables .............................................
