@@ -24,8 +24,7 @@ package net.sf.webcat.opinions;
 import com.webobjects.appserver.*;
 import com.webobjects.foundation.NSTimestamp;
 import net.sf.webcat.core.*;
-import net.sf.webcat.grader.Assignment;
-import net.sf.webcat.grader.Submission;
+import net.sf.webcat.grader.AssignmentOffering;
 import org.apache.log4j.Logger;
 
 //-------------------------------------------------------------------------
@@ -56,7 +55,7 @@ public class OpinionsSurveyPage
 
     //~ KVC Attributes (must be public) .......................................
 
-    public Assignment assignment;
+    public AssignmentOffering assignmentOffering;
     public SurveyResponse response;
 
 
@@ -68,7 +67,7 @@ public class OpinionsSurveyPage
         if (response == null)
         {
             response = SurveyResponse.create(localContext());
-            response.setAssignmentRelationship(assignment);
+            response.setAssignmentOfferingRelationship(assignmentOffering);
             response.setUserRelationship(user());
         }
         super.appendToResponse(pageResponse, context);

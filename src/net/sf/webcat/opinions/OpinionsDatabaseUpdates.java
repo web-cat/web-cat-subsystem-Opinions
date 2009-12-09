@@ -79,7 +79,7 @@ public class OpinionsDatabaseUpdates
             log.info( "creating table TSurveyReminderJob" );
             database().executeSQL(
                 "CREATE TABLE TSurveyReminderJob "
-                + "(assignmentId INTEGER , "
+                + "(assignmentOfferingId INTEGER , "
                 + "dueTime DATETIME , "
                 + "OID INTEGER NOT NULL )");
             database().executeSQL(
