@@ -145,7 +145,7 @@ public class PendingAssignmentOpinionsPage
 
             // First, get all responses this user has completed.
             NSArray<SurveyResponse> userResponses =
-                SurveyResponse.objectsForUser(localContext(), user());
+                SurveyResponse.responsesForUser(localContext(), user());
             if (log.isDebugEnabled())
             {
                 log.debug("responses from user: " + userResponses);
