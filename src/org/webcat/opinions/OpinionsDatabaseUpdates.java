@@ -19,11 +19,11 @@
  |  along with Web-CAT; if not, see <http://www.gnu.org/licenses/>.
 \*==========================================================================*/
 
-package net.sf.webcat.opinions;
+package org.webcat.opinions;
 
-import net.sf.webcat.dbupdate.UpdateSet;
 import java.sql.SQLException;
 import org.apache.log4j.Logger;
+import org.webcat.dbupdate.UpdateSet;
 
 //-------------------------------------------------------------------------
 /**

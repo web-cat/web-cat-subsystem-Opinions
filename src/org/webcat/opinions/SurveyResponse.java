@@ -1,7 +1,7 @@
 /*==========================================================================*\
  |  $Id$
  |*-------------------------------------------------------------------------*|
- |  Copyright (C) 2006-2008 Virginia Tech
+ |  Copyright (C) 2006 Virginia Tech
  |
  |  This file is part of Web-CAT.
  |
@@ -19,44 +19,34 @@
  |  along with Web-CAT; if not, see <http://www.gnu.org/licenses/>.
 \*==========================================================================*/
 
-package net.sf.webcat.opinions;
+package org.webcat.opinions;
 
-import net.sf.webcat.jobqueue.WorkerThread;
+import com.webobjects.eocontrol.*;
+import com.webobjects.foundation.*;
 
-//-------------------------------------------------------------------------
+// -------------------------------------------------------------------------
 /**
- * A {@link WorkerThread} subclass for processing survey reminders.
+ * TODO: place a real description here.
  *
  * @author Stephen Edwards
  * @author Last changed by $Author$
  * @version $Revision$, $Date$
  */
-public class SurveyReminderWorker
-    extends WorkerThread<SurveyReminderJob>
+public class SurveyResponse
+    extends _SurveyResponse
 {
     //~ Constructors ..........................................................
 
     // ----------------------------------------------------------
     /**
-     * Creates a new object.
-     * @param descriptor the descriptor for this worker thread
+     * Creates a new SurveyResponse object.
      */
-    public SurveyReminderWorker()
+    public SurveyResponse()
     {
-        super(SurveyReminderJob.ENTITY_NAME);
+        super();
     }
 
 
     //~ Methods ...............................................................
 
-    // ----------------------------------------------------------
-    /**
-     * Processes one survey reminder job by sending out e-mail to everyone
-     * who submitted to the given assignment offering, as well as all
-     * instructors assigned to teach the corresponding course offering.
-     */
-    protected void processJob()
-    {
-        // TODO: implement
-    }
 }

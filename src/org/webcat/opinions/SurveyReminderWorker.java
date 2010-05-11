@@ -1,7 +1,7 @@
 /*==========================================================================*\
  |  $Id$
  |*-------------------------------------------------------------------------*|
- |  Copyright (C) 2006 Virginia Tech
+ |  Copyright (C) 2006-2008 Virginia Tech
  |
  |  This file is part of Web-CAT.
  |
@@ -19,34 +19,44 @@
  |  along with Web-CAT; if not, see <http://www.gnu.org/licenses/>.
 \*==========================================================================*/
 
-package net.sf.webcat.opinions;
+package org.webcat.opinions;
 
-import com.webobjects.eocontrol.*;
-import com.webobjects.foundation.*;
+import org.webcat.jobqueue.WorkerThread;
 
-// -------------------------------------------------------------------------
+//-------------------------------------------------------------------------
 /**
- * TODO: place a real description here.
+ * A {@link WorkerThread} subclass for processing survey reminders.
  *
  * @author Stephen Edwards
  * @author Last changed by $Author$
  * @version $Revision$, $Date$
  */
-public class SurveyReminderJob
-    extends _SurveyReminderJob
+public class SurveyReminderWorker
+    extends WorkerThread<SurveyReminderJob>
 {
     //~ Constructors ..........................................................
 
     // ----------------------------------------------------------
     /**
-     * Creates a new SurveyReminderJob object.
+     * Creates a new object.
+     * @param descriptor the descriptor for this worker thread
      */
-    public SurveyReminderJob()
+    public SurveyReminderWorker()
     {
-        super();
+        super(SurveyReminderJob.ENTITY_NAME);
     }
 
 
     //~ Methods ...............................................................
 
+    // ----------------------------------------------------------
+    /**
+     * Processes one survey reminder job by sending out e-mail to everyone
+     * who submitted to the given assignment offering, as well as all
+     * instructors assigned to teach the corresponding course offering.
+     */
+    protected void processJob()
+    {
+        // TODO: implement
+    }
 }

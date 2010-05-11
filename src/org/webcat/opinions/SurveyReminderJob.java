@@ -19,7 +19,7 @@
  |  along with Web-CAT; if not, see <http://www.gnu.org/licenses/>.
 \*==========================================================================*/
 
-package net.sf.webcat.opinions;
+package org.webcat.opinions;
 
 import com.webobjects.eocontrol.*;
 import com.webobjects.foundation.*;
@@ -32,16 +32,16 @@ import com.webobjects.foundation.*;
  * @author Last changed by $Author$
  * @version $Revision$, $Date$
  */
-public class SurveyResponse
-    extends _SurveyResponse
+public class SurveyReminderJob
+    extends _SurveyReminderJob
 {
     //~ Constructors ..........................................................
 
     // ----------------------------------------------------------
     /**
-     * Creates a new SurveyResponse object.
+     * Creates a new SurveyReminderJob object.
      */
-    public SurveyResponse()
+    public SurveyReminderJob()
     {
         super();
     }

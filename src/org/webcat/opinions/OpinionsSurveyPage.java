@@ -1,7 +1,7 @@
 /*==========================================================================*\
  |  $Id$
  |*-------------------------------------------------------------------------*|
- |  Copyright (C) 2006-2008 Virginia Tech
+ |  Copyright (C) 2009 Virginia Tech
  |
  |  This file is part of Web-CAT.
  |
@@ -19,69 +19,74 @@
  |  along with Web-CAT; if not, see <http://www.gnu.org/licenses/>.
 \*==========================================================================*/
 
-package net.sf.webcat.opinions;
+package org.webcat.opinions;
 
 import org.apache.log4j.Logger;
-import net.sf.webcat.core.Subsystem;
-import net.sf.webcat.jobqueue.QueueDescriptor;
+import org.webcat.core.WCComponent;
+import org.webcat.grader.AssignmentOffering;
+import com.webobjects.appserver.WOComponent;
+import com.webobjects.appserver.WOContext;
+import com.webobjects.appserver.WOResponse;
+import com.webobjects.foundation.NSTimestamp;
 
 //-------------------------------------------------------------------------
 /**
- * This subsystem provides feedback/opinion surveys that give students
- * and staff a chance to express their opinions about how engaging and/or
- * frustrating a given assignment is.
+ * This page presents the user with the feedback/opinions survey for
+ * the given assignment.
  *
  * @author Stephen Edwards
  * @author Last changed by $Author$
  * @version $Revision$, $Date$
  */
-public class Opinions
-    extends Subsystem
+public class OpinionsSurveyPage
+    extends WCComponent
 {
-    //~ Constructor ...........................................................
+    //~ Constructors ..........................................................
 
     // ----------------------------------------------------------
     /**
      * Creates a new object.
+     *
+     * @param context The context to use
      */
-    public Opinions()
+    public OpinionsSurveyPage(WOContext context)
     {
-        super();
+        super(context);
     }
+
+
+    //~ KVC Attributes (must be public) .......................................
+
+    public AssignmentOffering assignmentOffering;
+    public SurveyResponse response;
 
 
     //~ Methods ...............................................................
 
     // ----------------------------------------------------------
-    public void init()
+    public void appendToResponse(WOResponse pageResponse, WOContext context)
     {
-        super.init();
-        QueueDescriptor.registerQueue(SurveyReminderJob.ENTITY_NAME);
-        // create the thread and start it
+        if (response == null)
+        {
+            response = SurveyResponse.create(localContext());
+            response.setAssignmentOfferingRelationship(assignmentOffering);
+            response.setUserRelationship(user());
+        }
+        super.appendToResponse(pageResponse, context);
     }
 
 
     // ----------------------------------------------------------
-//    private void competingRegistration2()
-//    {
-//        net.sf.webcat.dbupdate.MySQLDatabase db =
-//            new net.sf.webcat.dbupdate.MySQLDatabase();
-//        db.setConnectionInfoFromProperties(
-//            Application.configurationProperties());
-//        try
-//        {
-//            db.executeSQL("insert into TQueueDescriptor (OID, jobEntityName, "
-//                + "newestEntryId, requiresExclusiveHostAccess) values("
-//                + "'7', 'SurveyReminderJob', '1', '0')");
-//        }
-//        catch (SQLException e)
-//        {
-//            log.error("sql error:", e);
-//        }
-//    }
+    public WOComponent next()
+    {
+        response.setSubmitTime(new NSTimestamp());
+        // Since we're in a SaveCancelPage, the call to super.next()
+        // will save all changes.
+        return super.next();
+    }
 
 
     //~ Instance/static variables .............................................
 
-    static Logger log = Logger.getLogger(Opinions.class);
+    static Logger log = Logger.getLogger(OpinionsSurveyPage.class);
 }

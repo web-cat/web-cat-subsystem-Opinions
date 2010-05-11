@@ -19,20 +19,24 @@
  |  along with Web-CAT; if not, see <http://www.gnu.org/licenses/>.
 \*==========================================================================*/
 
-package net.sf.webcat.opinions;
+package org.webcat.opinions;
 
 import org.apache.log4j.Logger;
-import com.webobjects.appserver.*;
+import org.webcat.core.Application;
+import org.webcat.core.CourseOffering;
+import org.webcat.core.WCComponent;
+import org.webcat.grader.Assignment;
+import org.webcat.grader.AssignmentOffering;
+import org.webcat.grader.Submission;
+import com.webobjects.appserver.WOComponent;
+import com.webobjects.appserver.WOContext;
+import com.webobjects.appserver.WOResponse;
 import com.webobjects.eocontrol.EOFetchSpecification;
 import com.webobjects.foundation.NSArray;
 import com.webobjects.foundation.NSMutableArray;
+import er.extensions.appserver.ERXDisplayGroup;
 import er.extensions.eof.ERXQ;
 import er.extensions.eof.ERXS;
-import net.sf.webcat.core.*;
-import net.sf.webcat.grader.Assignment;
-import net.sf.webcat.grader.AssignmentOffering;
-import net.sf.webcat.grader.Submission;
-import er.extensions.appserver.ERXDisplayGroup;
 
 //-------------------------------------------------------------------------
 /**
