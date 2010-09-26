@@ -65,6 +65,18 @@ public class OpinionsDatabaseUpdates
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Changes course CRNs to strings.
+     * @throws SQLException on error
+     */
+    public void updateIncrement1() throws SQLException
+    {
+        database().executeSQL(
+            "alter table TSurveyReminderJob add suspensionReason MEDIUMTEXT" );
+    }
+
+
     //~ Private Methods .......................................................
 
     // ----------------------------------------------------------
