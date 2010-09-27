@@ -21,15 +21,12 @@
 
 package org.webcat.opinions;
 
-import com.webobjects.eocontrol.*;
-import com.webobjects.foundation.*;
-
 // -------------------------------------------------------------------------
 /**
  * TODO: place a real description here.
  *
- * @author Stephen Edwards
- * @author Last changed by $Author$
+ * @author  Stephen Edwards
+ * @author  Last changed by $Author$
  * @version $Revision$, $Date$
  */
 public class SurveyReminderJob
@@ -45,8 +42,4 @@ public class SurveyReminderJob
     {
         super();
     }
-
-
-    //~ Methods ...............................................................
-
 }
