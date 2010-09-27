@@ -32,7 +32,7 @@ import org.webcat.dbupdate.UpdateSet;
  * output for this class uses its parent class' logger.
  *
  * @author  Stephen Edwards
- * @author Last changed by $Author$
+ * @author  Last changed by $Author$
  * @version $Revision$, $Date$
  */
 public class OpinionsDatabaseUpdates
