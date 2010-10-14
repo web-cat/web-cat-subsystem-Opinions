@@ -22,7 +22,6 @@
 package org.webcat.opinions;
 
 import java.sql.SQLException;
-import org.apache.log4j.Logger;
 import org.webcat.dbupdate.UpdateSet;
 
 //-------------------------------------------------------------------------
@@ -74,6 +73,22 @@ public class OpinionsDatabaseUpdates
     {
         database().executeSQL(
             "alter table TSurveyReminderJob add suspensionReason MEDIUMTEXT" );
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Add indexes for better performance.
+     * @throws SQLException on error
+     */
+    public void updateIncrement2() throws SQLException
+    {
+        // Indices for SurveyReminderJob
+        // None needed
+
+        // Indices for SurveyResponse
+        createIndexFor("TSurveyResponse", "assignmentOfferingId");
+        createIndexFor("TSurveyResponse", "userId");
     }
 
 
@@ -131,9 +146,4 @@ public class OpinionsDatabaseUpdates
                 "ALTER TABLE TSurveyResponse ADD PRIMARY KEY (OID)" );
         }
     }
-
-
-    //~ Instance/static variables .............................................
-
-    static Logger log = Logger.getLogger(OpinionsDatabaseUpdates.class);
 }
