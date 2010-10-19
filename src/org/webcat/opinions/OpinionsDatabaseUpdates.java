@@ -92,6 +92,19 @@ public class OpinionsDatabaseUpdates
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Add SurveyNotificationMarker table.
+     * @throws SQLException on error
+     */
+    public void updateIncrement3() throws SQLException
+    {
+        database().executeSQL(
+            "alter table TSurveyReminderJob drop suspensionReason" );
+        createSurveyNotificationMarkerTable();
+    }
+
+
     //~ Private Methods .......................................................
 
     // ----------------------------------------------------------
@@ -144,6 +157,27 @@ public class OpinionsDatabaseUpdates
                 + "userId INTEGER )");
             database().executeSQL(
                 "ALTER TABLE TSurveyResponse ADD PRIMARY KEY (OID)" );
+        }
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Create the SurveyNotificationMarker table, if needed.
+     * @throws SQLException on error
+     */
+    private void createSurveyNotificationMarkerTable() throws SQLException
+    {
+        if ( !database().hasTable( "SurveyNotificationMarker" ) )
+        {
+            log.info( "creating table SurveyNotificationMarker" );
+            database().executeSQL(
+                "CREATE TABLE SurveyNotificationMarker "
+                + "(assignmentOfferingId INTEGER NOT NULL, "
+                + "OID INTEGER NOT NULL )");
+            database().executeSQL(
+                "ALTER TABLE SurveyNotificationMarker ADD PRIMARY KEY (OID)" );
+            createIndexFor("SurveyNotificationMarker", "assignmentOfferingId");
         }
     }
 }
