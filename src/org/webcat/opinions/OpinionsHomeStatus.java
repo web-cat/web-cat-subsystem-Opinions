@@ -147,10 +147,10 @@ public class OpinionsHomeStatus
             if (log.isDebugEnabled())
             {
                 log.debug("final list: " + pendingOpinions);
+                Application.disableSQLLogging();
             }
             assignmentOfferingDisplayGroup.setObjectArray(pendingOpinions);
             hasSurveys = pendingOpinions.count() > 0;
-            Application.disableSQLLogging();
         }
         super.appendToResponse(response, context);
     }

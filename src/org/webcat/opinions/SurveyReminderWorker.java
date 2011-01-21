@@ -88,7 +88,7 @@ public class SurveyReminderWorker
         }
 
         // Record that notifications have been sent
-        SurveyNotificationMarker.create(localContext(), assignment);
+// FIXME:        SurveyNotificationMarker.create(localContext(), assignment);
         localContext().saveChanges();
     }
 
@@ -112,7 +112,7 @@ public class SurveyReminderWorker
         {
             log.debug("sending survey reminder message to "
                 + user + " for " + assignment);
-            new SurveyReminderMessage(user, properties).send();
+// FIXME:           new SurveyReminderMessage(user, properties).send();
         }
         catch (Exception e)
         {

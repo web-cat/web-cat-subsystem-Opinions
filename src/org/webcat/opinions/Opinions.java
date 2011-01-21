@@ -33,7 +33,6 @@ import org.webcat.opinions.messaging.SurveyReminderMessage;
 import com.webobjects.eocontrol.EOEditingContext;
 import com.webobjects.foundation.NSArray;
 import com.webobjects.foundation.NSTimestamp;
-import er.extensions.eof.ERXConstant;
 
 //-------------------------------------------------------------------------
 /**
@@ -136,6 +135,8 @@ public class Opinions
         @Override
         public void run()
         {
+            Application.waitForInitializationToComplete();
+
             // repeat forever
             while (true)
             {
