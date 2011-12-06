@@ -24,6 +24,7 @@ package org.webcat.opinions.messaging;
 import org.webcat.core.User;
 import org.webcat.core.WCProperties;
 import org.webcat.core.messaging.Message;
+import com.webobjects.eocontrol.EOEditingContext;
 import com.webobjects.foundation.NSArray;
 import com.webobjects.foundation.NSDictionary;
 import com.webobjects.foundation.NSMutableDictionary;
@@ -45,7 +46,16 @@ public class SurveyReminderMessage
     // ----------------------------------------------------------
     public SurveyReminderMessage(User user, WCProperties properties)
     {
-        this.user = user;
+        EOEditingContext ec = editingContext();
+        try
+        {
+            ec.lock();
+            this.user = user.localInstance(ec);
+        }
+        finally
+        {
+            ec.unlock();
+        }
         this.properties = properties;
     }
 
