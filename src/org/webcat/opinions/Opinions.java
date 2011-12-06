@@ -87,9 +87,9 @@ public class Opinions
     // ----------------------------------------------------------
     public void start()
     {
-        new SurveyReminderWorker().start();
-
-        new SurveyReminderWatcher().start();
+//        new SurveyReminderWorker().start();
+//
+//        new SurveyReminderWatcher().start();
     }
 
 
@@ -128,6 +128,10 @@ public class Opinions
 
 
     // ----------------------------------------------------------
+    /**
+     * A thread that checks every 24 hours for new assignments where
+     * track opinions is set, and creates survey reminder jobs for them.
+     */
     private static class SurveyReminderWatcher
         extends Thread
     {
